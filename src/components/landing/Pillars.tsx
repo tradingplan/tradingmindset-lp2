@@ -57,7 +57,7 @@ const PHASES = [
 
 function BreathingDemo() {
   const [phase, setPhase] = useState(0);
-  const [left, setLeft] = useState(PHASES[0].seconds);
+  const [left, setLeft] = useState(PHASES[0]!.seconds);
   const [running, setRunning] = useState(false);
   const phaseRef = useRef(0);
 
@@ -69,13 +69,13 @@ function BreathingDemo() {
         const next = (phaseRef.current + 1) % PHASES.length;
         phaseRef.current = next;
         setPhase(next);
-        return PHASES[next].seconds;
+        return PHASES[next]!.seconds;
       });
     }, 1000);
     return () => clearInterval(id);
   }, [running]);
 
-  const current = PHASES[phase];
+  const current = PHASES[phase]!;
   const progress = ((current.seconds - left + 1) / current.seconds) * 100;
 
   return (

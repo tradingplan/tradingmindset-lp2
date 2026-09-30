@@ -27,7 +27,7 @@ const CARDS = [
 export function TarotDemo() {
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
-  const card = CARDS[index];
+  const card = CARDS[index]!;
 
   const draw = () => {
     if (revealed) {
